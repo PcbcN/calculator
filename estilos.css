@@ -2,7 +2,6 @@ body {
 margin: 0px;
 min-height: 100vh;
 background-color: beige;
-
 }
 
 #Contenedor-principal {
@@ -19,4 +18,47 @@ background-color: beige;
     width: 600px;
     background-color: darkcyan;
     box-shadow: 1px 1px 3px 6px grey;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#Pantalla {
+    height: 200px;
+    margin-bottom: 10px;
+    width: 600px;
+    background-color: indianred;
+    align-self: center;
+    justify-self: center;
+    border: 1px solid black;
+
+
+}
+
+#input-contenedor{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+
+}
+
+.teclas {
+    height: 100%;
+    width: 100%;
+    background-color: dimgray;
+    border: 1px solid black;
+    align-self: center;
+    justify-self:center;
+}
+
+#borrar {
+    grid-column: 1 / 4;
+    width: 100%;
+}
+
+#cero {
+    grid-column: 1 / 4;
+    width: 100%;
 }
