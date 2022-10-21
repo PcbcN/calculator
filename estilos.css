@@ -1,7 +1,22 @@
+
 body {
 margin: 0px;
 min-height: 100vh;
 background-color: beige;
+}
+
+h1 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20pt;
+    color:darkred;
+}
+
+
+.simbolos {
+    font-family: Meatball;
+    font-size: 26pt;
+    text-align: center;
+    color:azure;
 }
 
 #Contenedor-principal {
@@ -16,23 +31,22 @@ background-color: beige;
 #contenedor-calculadora {
     height: 800px;
     width: 600px;
-    background-color: darkcyan;
+    background-color:lightslategrey;
     box-shadow: 1px 1px 3px 6px grey;
     display: flex;
     flex-direction: column;
     padding: 10px;
+    margin-top: 30px;
 }
 
 #Pantalla {
     height: 200px;
     margin-bottom: 10px;
     width: 600px;
-    background-color: indianred;
+    background-color:dimgrey;
     align-self: center;
     justify-self: center;
     border: 1px solid black;
-
-
 }
 
 #input-contenedor{
@@ -47,7 +61,7 @@ background-color: beige;
 .teclas {
     height: 100%;
     width: 100%;
-    background-color: dimgray;
+    background-color:darkcyan;
     border: 1px solid black;
     align-self: center;
     justify-self:center;
