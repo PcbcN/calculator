@@ -1,20 +1,21 @@
 const numeros = document.getElementsByClassName("numeros");
 const teclas = document.getElementsByClassName("teclas");
 const operar = document.getElementById("igual");
+let display = "";
+let pantalla = 0;
+
 
 //Eventos
-for (let item of numeros) {
-  item.addEventListener("click", function clickear(){
-    console.log(item.id);
-  })
-}
+for (const item of numeros) {
+  item.addEventListener("click", hacerClick);
+};
 
-for (let item of teclas) {
-  item.addEventListener("click", function clickear(){
-    console.log(item.id);
-  })
-}
-
+function hacerClick(n){
+  console.log(this.id);
+  display = display.concat(this.id);
+  pantalla = parseInt(display);
+  document.getElementById("Pantalla").innerHTML = pantalla;
+};
 
 
 
@@ -30,6 +31,9 @@ function add(a,b) {
 function subtract(a,b) {
   console.log(a - b);
 };
+
+
+
 
 
 
