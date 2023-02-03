@@ -1,20 +1,33 @@
 const numeros = document.getElementsByClassName("numeros");
 const teclas = document.getElementsByClassName("teclas");
-const operar = document.getElementById("igual");
+const operar = document.getElementById("igual").addEventListener("click", pulsarIgual);
+const borrar = document.getElementById("borrar").addEventListener("click", borrarPantalla);
+
 let display = "";
-let pantalla = 0;
+let datos = 0;
+let operacion = "";
 
 
 //Eventos
 for (const item of numeros) {
-  item.addEventListener("click", hacerClick);
+  item.addEventListener("click", picarNumero);
 };
 
-function hacerClick(n){
+//Funciones calculadora
+function picarNumero(n){
   console.log(this.id);
   display = display.concat(this.id);
-  pantalla = parseInt(display);
-  document.getElementById("Pantalla").innerHTML = pantalla;
+  document.getElementById("Pantalla").innerHTML = display;
+};
+
+function borrarPantalla (n){
+  document.getElementById("Pantalla").innerHTML = "";
+  display = "";
+};
+
+function pulsarIgual(){
+  datos = eval(display);
+  document.getElementById("Pantalla").innerHTML = datos;
 };
 
 
@@ -34,6 +47,7 @@ function subtract(a,b) {
 
 
 
+var test = "2 * 4";
 
 
 
