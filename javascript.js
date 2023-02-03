@@ -1,5 +1,4 @@
 const numeros = document.getElementsByClassName("numeros");
-const teclas = document.getElementsByClassName("teclas");
 const operar = document.getElementById("igual").addEventListener("click", pulsarIgual);
 const borrar = document.getElementById("borrar").addEventListener("click", borrarPantalla);
 
@@ -20,34 +19,16 @@ function picarNumero(n){
   document.getElementById("Pantalla").innerHTML = display;
 };
 
-function borrarPantalla (n){
+function borrarPantalla (){
   document.getElementById("Pantalla").innerHTML = "";
   display = "";
 };
 
 function pulsarIgual(){
-  datos = eval(display);
+  datos = eval(display); //Nooooooooo
   document.getElementById("Pantalla").innerHTML = datos;
 };
 
-
-
-//Operaciones reservadas
-function operate(o,a,b){
-  o(a,b);
-}
-
-function add(a,b) {
-  console.log(a + b);
-};
-
-function subtract(a,b) {
-  console.log(a - b);
-};
-
-
-
-var test = "2 * 4";
 
 
 
@@ -87,5 +68,17 @@ const add = function(a,b) {
       return result;
   
   };
+
+  function operate(o,a,b){
+  o(a,b);
+}
+
+function add(a,b) {
+  console.log(a + b);
+};
+
+function subtract(a,b) {
+  console.log(a - b);
+};
 
 */
