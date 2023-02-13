@@ -4,6 +4,7 @@ const resultar = document.getElementById("igual").addEventListener("click", puls
 const borrar = document.getElementById("borrar").addEventListener("click", clear);
 
 let display = "";
+let calculo = "";
 let numero1 = 0;
 let numero2 = 0;
 let resultado = 0;
@@ -48,12 +49,13 @@ function operate (o,a,b){
 function picarNumero(n){
   display = display.concat(this.id);
   document.getElementById("Pantalla").innerHTML = display;
-  if(numero1 === 0) {numero1 = Number(display)}
-  else {numero2 = Number(display)}
+
 };
 
 function picarTecla(n){
- switch (this.id) {
+  if(numero1 === 0) {numero1 = Number(display)}
+  else {numero2 = Number(display)}
+  switch (this.id) {
       case "+":
         o = sumar;
         borrarPantalla();
@@ -95,8 +97,12 @@ function clear(){
 }
 
 function pulsarIgual(){
+  if(numero1 === 0) {numero1 = Number(display)}
+  else {numero2 = Number(display)}
+
+
   operate(o,numero1,numero2);
-  console.log(resultado);
+  document.getElementById("Pantalla").innerHTML = resultado;
 };
 
 
