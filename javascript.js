@@ -18,64 +18,6 @@ for (const item of teclas) {
   item.addEventListener("click", picarTecla);
 };
 
-//Funciones calculadora
-
-function picarNumero(n){
-  display = display.concat(this.id);
-  document.getElementById("Pantalla").innerHTML = display;
-  if(numero1 === 0) {numero1 = Number(display)}
-  else {numero2 = Number(display)}
-};
-
-function picarTecla(n){
-
-  switch (this.id) {
-    case "+":
-      resultado = sumar(numero1,numero2);
-      borrarPantalla();
-      break;
-
-    case "-":
-      resultado = restar(numero1,numero2)
-      borrarPantalla();
-      break;
-
-    case "*":
-      resultado = multiplicar(numero1,numero2)
-      borrarPantalla();
-      break;
-
-    case "/":
-      resultado = dividir(numero1,numero2)
-      borrarPantalla();
-      break;
-  
-    default:
-      alert ("Oooops");
-      break;
-  }
-
-};
-
-function borrarPantalla (){
-  document.getElementById("Pantalla").innerHTML = "";
-  display = "";
-};
-
-function clear(){
-  document.getElementById("Pantalla").innerHTML = "";
-  display = "";
-  resultado = 0;
-  numero1 = 0;
-  numero2 = 0;
-
-}
-
-function pulsarIgual(){
-  console.log(resultado);
-};
-
-
 //Funciones operar
 
 function sumar(a,b) {
@@ -95,5 +37,68 @@ function dividir(a,b) {
 function multiplicar(a,b) {
   return a * b;
 };
+
+function operate (o,a,b){
+  resultado = o(a,b);
+}
+
+
+//Funciones calculadora
+
+function picarNumero(n){
+  display = display.concat(this.id);
+  document.getElementById("Pantalla").innerHTML = display;
+  if(numero1 === 0) {numero1 = Number(display)}
+  else {numero2 = Number(display)}
+};
+
+function picarTecla(n){
+ switch (this.id) {
+      case "+":
+        o = sumar;
+        borrarPantalla();
+        break;
+
+      case "-":
+        o = restar;
+        borrarPantalla();
+        break;
+
+      case "*":
+        o = multiplicar;
+        borrarPantalla();
+        break;
+
+      case "/":
+        o = dividir;
+        borrarPantalla();
+        break;
+    
+      default:
+        alert ("Oooops");
+        break;
+  }
+};
+
+function borrarPantalla (){
+  document.getElementById("Pantalla").innerHTML = "";
+  display = "";
+};
+
+function clear(){
+  document.getElementById("Pantalla").innerHTML = "";
+  display = "";
+  resultado = 0;
+  numero1 = 0;
+  numero2 = 0;
+
+}
+
+function pulsarIgual(){
+  operate(o,numero1,numero2);
+  console.log(resultado);
+};
+
+
 
 
