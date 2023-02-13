@@ -100,9 +100,9 @@ function pulsarIgual(){
   if(numero1 === 0) {numero1 = Number(display)}
   else {numero2 = Number(display)}
 
-
   operate(o,numero1,numero2);
   document.getElementById("Pantalla").innerHTML = resultado;
+  numero1 = resultado;
 };
 
 
