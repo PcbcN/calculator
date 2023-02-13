@@ -1,10 +1,12 @@
 const numeros = document.getElementsByClassName("numeros");
-const operar = document.getElementById("igual").addEventListener("click", pulsarIgual);
-const borrar = document.getElementById("borrar").addEventListener("click", borrarPantalla);
+const teclas = document.getElementsByClassName("operacion");
+const resultar = document.getElementById("igual").addEventListener("click", pulsarIgual);
+const borrar = document.getElementById("borrar").addEventListener("click", clear);
 
 let display = "";
-let datos = 0;
-let operacion = "";
+let numero1 = 0;
+let numero2 = 0;
+let resultado = 0;
 
 
 //Eventos
@@ -12,11 +14,47 @@ for (const item of numeros) {
   item.addEventListener("click", picarNumero);
 };
 
+for (const item of teclas) {
+  item.addEventListener("click", picarTecla);
+};
+
 //Funciones calculadora
+
 function picarNumero(n){
-  console.log(this.id);
   display = display.concat(this.id);
   document.getElementById("Pantalla").innerHTML = display;
+  if(numero1 === 0) {numero1 = Number(display)}
+  else {numero2 = Number(display)}
+};
+
+function picarTecla(n){
+
+  switch (this.id) {
+    case "+":
+      resultado = sumar(numero1,numero2);
+      borrarPantalla();
+      break;
+
+    case "-":
+      resultado = restar(numero1,numero2)
+      borrarPantalla();
+      break;
+
+    case "*":
+      resultado = multiplicar(numero1,numero2)
+      borrarPantalla();
+      break;
+
+    case "/":
+      resultado = dividir(numero1,numero2)
+      borrarPantalla();
+      break;
+  
+    default:
+      alert ("Oooops");
+      break;
+  }
+
 };
 
 function borrarPantalla (){
@@ -24,61 +62,38 @@ function borrarPantalla (){
   display = "";
 };
 
-function pulsarIgual(){
-  datos = eval(display); //Nooooooooo
-  document.getElementById("Pantalla").innerHTML = datos;
-};
+function clear(){
+  document.getElementById("Pantalla").innerHTML = "";
+  display = "";
+  resultado = 0;
+  numero1 = 0;
+  numero2 = 0;
 
-
-
-
-
-/* Funciones auxiliares que se van llamando  
-const add = function(a,b) {
-    return a + b;
-  };
-  
-  const subtract = function(a,b) {
-      return a - b;
-  };
-
-  const sumar = function(arr) {
-    let result = 0;
-      for (const item of arr){
-        result += item;
-      }
-      return result;
-  
-  };
-
-  const multiplicar = function(arr) {
-    let result = 1;
-      for (const item of arr){
-        result *= item;
-      }
-      return result;
-  
-  };
-
-  const dividir = function(arr) {
-    let result = 1;
-      for (const item of arr){
-        result /= item;
-      }
-      return result;
-  
-  };
-
-  function operate(o,a,b){
-  o(a,b);
 }
 
-function add(a,b) {
-  console.log(a + b);
+function pulsarIgual(){
+  console.log(resultado);
 };
 
-function subtract(a,b) {
-  console.log(a - b);
+
+//Funciones operar
+
+function sumar(a,b) {
+  return a + b;
 };
 
-*/
+function restar(a,b) {
+  return a - b;
+};
+
+
+function dividir(a,b) {
+  return a / b;
+};
+
+
+function multiplicar(a,b) {
+  return a * b;
+};
+
+

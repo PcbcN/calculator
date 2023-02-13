@@ -74,6 +74,16 @@ h1 {
     border-radius: 15px;
 }
 
+.operacion{
+    height: 100%;
+    width: 100%;
+    background-color:darkcyan;
+    border: 1px solid black;
+    align-self: center;
+    justify-self:center;
+    border-radius: 15px;    
+}
+
 .operar {
     height: 100%;
     width: 100%;
