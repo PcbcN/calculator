@@ -8,6 +8,8 @@ let calculo = "";
 let numero1 = 0;
 let numero2 = 0;
 let resultado = 0;
+let input = "";
+
 
 
 //Eventos
@@ -18,6 +20,10 @@ for (const item of numeros) {
 for (const item of teclas) {
   item.addEventListener("click", picarTecla);
 };
+
+document.addEventListener('keypress', (event) => {
+  input = input.concat(event.key);
+}, false);
 
 //Funciones operar
 
@@ -105,6 +111,6 @@ function pulsarIgual(){
   numero1 = resultado;
 };
 
-
+//Entrada teclado
 
 
