@@ -7,7 +7,7 @@ let display = "";
 let calculo = "";
 let numero1;
 let numero2;
-let resultado = 0;
+let resultado;
 let input = "";
 
 
@@ -23,12 +23,15 @@ for (const item of teclas) {
 
 document.addEventListener('keypress', (event) => {
   let valor = event.key;
-  if (valor >= 0 && valor <= 9){
+  event.preventDefault();
+
+  if (valor >= 0 && valor <= 9 || valor === "."){
     display = display.concat(valor);
     document.getElementById("Pantalla").innerHTML = display;
+
   } else if (valor === "+" || valor === "-" || valor === "*" || valor === "/"){
-    if(!numero1) {numero1 = Number(display)}
-    else {numero2 = Number(display)}
+    if(!numero1) {numero1 = parseFloat(display)}
+    else {numero2 = parseFloat(display)}
     switch (event.key) {
         case "+":
           o = sumar;
@@ -54,6 +57,7 @@ document.addEventListener('keypress', (event) => {
           alert ("Oooops");
           break;
       }
+
     } else if (valor === "Enter"){
     pulsarIgual();
   }
@@ -94,8 +98,8 @@ function picarNumero(n){
 };
 
 function picarTecla(n){
-  if(numero1 === 0) {numero1 = Number(display)}
-  else {numero2 = Number(display)}
+  if(!numero1) {numero1 = parseFloat(display)}
+  else {numero2 = parseFloat(display)}
   switch (this.id) {
       case "+":
         o = sumar;
@@ -138,11 +142,11 @@ function clear(){
 }
 
 function pulsarIgual(){
-  if(numero1 === 0) {numero1 = Number(display)}
-  else {numero2 = Number(display)}
+  if(!numero1) {numero1 = parseFloat(display)}
+  else {numero2 = parseFloat(display)}
   
   operate(o,numero1,numero2);
-  document.getElementById("Pantalla").innerHTML = resultado;
-  numero1 = resultado;
+  document.getElementById("Pantalla").innerHTML = resultado.toFixed(2);
+  numero1 = resultado.toFixed(2);
 };
 
