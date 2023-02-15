@@ -6,7 +6,7 @@ const borrar = document.getElementById("borrar").addEventListener("click", clear
 let display = "";
 let calculo = "";
 let numero1;
-let numero2 = 0;
+let numero2;
 let resultado = 0;
 let input = "";
 
@@ -17,9 +17,12 @@ for (const item of numeros) {
   item.addEventListener("click", picarNumero);
 };
 
+for (const item of teclas) {
+  item.addEventListener("click", picarTecla);
+};
+
 document.addEventListener('keypress', (event) => {
-  var valor = event.key;
-  console.log(valor);
+  let valor = event.key;
   if (valor >= 0 && valor <= 9){
     display = display.concat(valor);
     document.getElementById("Pantalla").innerHTML = display;
@@ -53,12 +56,8 @@ document.addEventListener('keypress', (event) => {
       }
     } else if (valor === "Enter"){
     pulsarIgual();
-  } 
+  }
 }, false);
-
-for (const item of teclas) {
-  item.addEventListener("click", picarTecla);
-};
 
 
 //Funciones operar
@@ -141,7 +140,7 @@ function clear(){
 function pulsarIgual(){
   if(numero1 === 0) {numero1 = Number(display)}
   else {numero2 = Number(display)}
-
+  
   operate(o,numero1,numero2);
   document.getElementById("Pantalla").innerHTML = resultado;
   numero1 = resultado;
