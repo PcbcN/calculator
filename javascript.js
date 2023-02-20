@@ -21,14 +21,13 @@ for (const item of teclas) {
   item.addEventListener("click", picarTecla);
 };
 
-document.addEventListener('keypress', (event) => {
+document.addEventListener('keydown', (event) => {
   let valor = event.key;
   event.preventDefault();
 
   if (valor >= 0 && valor <= 9 || valor === "."){
     display = display.concat(valor);
     document.getElementById("Pantalla").innerHTML = display;
-
   } else if (valor === "+" || valor === "-" || valor === "*" || valor === "/"){
     if(!numero1) {numero1 = parseFloat(display)}
     else {numero2 = parseFloat(display)}
@@ -57,10 +56,12 @@ document.addEventListener('keypress', (event) => {
           alert ("Oooops");
           break;
       }
-
+    } else if (valor === "Backspace"){
+    clear();
+    
     } else if (valor === "Enter"){
     pulsarIgual();
-  }
+    }
 }, false);
 
 
@@ -76,7 +77,10 @@ function restar(a,b) {
 
 
 function dividir(a,b) {
+  if (b === 0){alert("Epa! Nada de dividir por cero!")}
+  else {
   return a / b;
+  }
 };
 
 
@@ -146,7 +150,7 @@ function pulsarIgual(){
   else {numero2 = parseFloat(display)}
   
   operate(o,numero1,numero2);
-  document.getElementById("Pantalla").innerHTML = resultado.toFixed(2);
+  document.getElementById("Pantalla").innerHTML = resultado;
   numero1 = resultado.toFixed(2);
 };
 
